@@ -55,7 +55,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@c53f88523ad1fcebbdb10b3bb9cfa7ddb69d6677  # v1.8.5 => c53f88523ad1fcebbdb10b3bb9cfa7ddb69d6677
         with:
-          images: dokku/ci-docker-image
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/dokku-ci-docker-image
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -71,7 +71,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ci-docker-image:${{ needs.push-enabled.outputs.docker-image-tag }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/dokku-ci-docker-image:${{ needs.push-enabled.outputs.docker-image-tag }}
           labels: |
             ${{ steps.docker_meta.outputs.labels }}
             org.opencontainers.image.version=${{ github.event.workflow_run.head_branch }}
