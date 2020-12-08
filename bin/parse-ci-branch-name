@@ -1,5 +1,6 @@
 #!/bin/sh -l
 set -e
+set -x
 
 value="$CI_BRANCH_NAME"
 if [ -n "$CI_BRANCH_NAME" ]; then

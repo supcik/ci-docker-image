@@ -1,5 +1,6 @@
 #!/bin/sh -l
 set -e
+set -x
 
 message="$*"
 echo "\u001b[31m${message}\u001b[0m" 1>&2

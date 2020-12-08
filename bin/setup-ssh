@@ -1,5 +1,6 @@
 #!/bin/sh -l
 set -e
+set -x
 
 log-info "Setting up SSH Key"
 
